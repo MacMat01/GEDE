@@ -4,6 +4,7 @@
 #include "PickupObject.h"
 #include <iostream>
 #include <random>
+#include <chrono>
 
 using namespace std;
 using namespace Ogre;
@@ -34,9 +35,12 @@ class PickupManager : public Singleton<PickupManager>
         static PickupManager* getSingletonPtr();
 
         static void addPickupObject(const char* mesh_file_name);
+        static void addPickupObject(const char* mesh_file_name, Vector3 position);
 
 
         static void Update(Ogre::Real delta_time, const Uint8* state);
+
+        static void createPickupTower();
 
 
     protected:
@@ -55,5 +59,20 @@ class PickupManager : public Singleton<PickupManager>
 
         /** Destory the pickup manager instance. */
         void _destroy();
+
+        // Tower members
+        static bool create_pickup_tower;
+        static int tower_current_layers;
+        static int tower_max_layers;
+        static int tower_width;
+        static int tower_length;
+        static float tower_current_height;
+        static float tower_spawn_timer;
+        static float tower_spawn_period;
+        static double tower_instantiation_milliseconds;
+
+        static void _create_pickup_tower_layer();
+        static void _destroy_pickup_tower();
+        static void _initialize_tower_parameters();
 };
 

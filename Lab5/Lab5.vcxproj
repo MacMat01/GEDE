@@ -153,6 +153,7 @@
     <ClCompile Include="PickupObject.cpp" />
     <ClCompile Include="PlayerAvatar.cpp" />
     <ClCompile Include="RoamingCamera.cpp" />
+    <ClCompile Include="StackAllocator.cpp" />
     <ClCompile Include="SwirlEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +165,7 @@
     <ClInclude Include="PickupObject.h" />
     <ClInclude Include="PlayerAvatar.h" />
     <ClInclude Include="RoamingCamera.h" />
+    <ClInclude Include="StackAllocator.h" />
     <ClInclude Include="SwirlEffect.h" />
   </ItemGroup>
   <ItemGroup>

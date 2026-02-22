@@ -113,6 +113,7 @@ void MyEngine::populateScene()
 
 	PickupManager::initialize(scene_manager_, player_->GetNode());
 	PickupManager::addPickupObject("MyOgreCube.mesh");
+	PickupManager::createPickupTower();
 }
 
 bool MyEngine::frameStarted(const Ogre::FrameEvent& evt)

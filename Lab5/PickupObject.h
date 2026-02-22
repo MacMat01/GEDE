@@ -3,6 +3,7 @@
 #include "IPickupObject.h"
 #include "IPickupEffect.h"
 #include "SwirlEffect.h"
+#include "StackAllocator.h"
 
 using namespace Ogre;
 using namespace OgreBites;
@@ -11,6 +12,8 @@ using namespace OgreBites;
 class PickupObject : public IPickupObject
 {
 public:
+	static const int array_size = 1000;
+
 	// CONSTRUCTOR
 	// scene_manager: Pointer to the main scene manager
 	// mesh_file_name: The asset file name of the mesh that will represent this object visually
@@ -18,6 +21,8 @@ public:
 	// scale: How much the size of the object is scaled in the x, y and z dimensions
 	PickupObject(SceneManager* scene_manager, const char* mesh_file_name, Vector3
 		position = Vector3(0, 0, 0), Vector3 scale = Vector3(1, 1, 1));
+	PickupObject(short allocation_mode, SceneManager* scene_manager, const char* mesh_file_name,
+		Vector3 position, Vector3 scale);
 	~PickupObject();
 
 	SceneNode* getSceneNode() const;		                  // Returns the scene node that holds this object
@@ -30,11 +35,18 @@ public:
 	void update(float delta_time) const;                      // Updates object, including any running motion effects
 
 private:
+	void _initialize(SceneManager* scene_manager, const char* mesh_file_name,
+		Vector3 position, Vector3 scale);
+
 	SceneManager* scene_manager_;      // The main scene manager
 
 	SceneNode* entity_node_;           // The scene node that holds the model
 	Entity* entity_;                   // The game object model
-	
+
 	bool picked_up_;                   // True if the pickup effect has been run
 	IPickupEffect* pickup_effect_;     // An interesting pickup motion effect 
+
+	short allocation_mode = -1;        // Memory allocation mode (-1 = none, 0 = new, 1 = OGRE, 2 = stack)
+	int* arr[array_size] = {};         // Array of int pointers for allocation testing
+	StackAllocator* stack_allocator = nullptr;
 };
