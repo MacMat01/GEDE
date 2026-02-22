@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exporter: blender2ogre 0.9.0 -->
+<!-- export_time: Thu, 12 Feb 2026 11:39:09 +0000 -->
+<!-- blender_version: 4.3.0 (release; Windows) -->
+<!-- previous_export_time: Thu, 12 Feb 2026 11:30:29 +0000 -->
+<scene author="samup" formatVersion="1.1" >
+  <nodes >
+    <node name="MyCubeModel" >
+      <position x="0.000000" y="0.000000" z="-0.000000" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="-0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <entity meshFile="MyOgreCube.mesh" name="MyCubeModel" >
+        <userData />
+      </entity>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="MyCubeMaterial.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground b="0.050876" g="0.050876" r="0.050876" />
+  </environment>
+</scene>

@@ -1,0 +1,28 @@
+material BrickTiles
+{
+   technique
+   {
+       pass 
+       {
+           specular 1 1 1 32
+    texture_unit 
+   {
+    texture floor_diffuse.PNG
+    filtering anisotropic //defines the type of filter
+    max_anisotropy 3      //sets level of filtering    
+   }
+
+           texture_unit
+          {
+                                texture floor_bump.PNG 
+                                colour_op_ex source1 src_current src_current
+          }
+            
+           rtshader_system
+          {
+                                lighting_stage normal_map floor_bump.PNG
+          }
+
+       }
+   }
+}
